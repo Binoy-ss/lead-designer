@@ -1,41 +1,46 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './Projects.css';
+import p1 from '../assets/p1.png';
+import p2 from '../assets/p2.png';
+import p3 from '../assets/p3.png';
+import p4 from '../assets/p4.png';
+import p5 from '../assets/p5.png';
 
 const projects = [
   {
     title: "Expo Campaign",
     category: "Design & Strategies",
     description: "Created promotional materials for the 'National Expo', including posters, flyers, and social media graphics.",
-    image: "src/assets/p1.png",
+    image: p1,
     link: "https://www.behance.net/gallery/248507411/Expo-Campaign-planning-creation-and-execution "
   },
   {
     title: "Website Creation ",
     category: "Web Design & Development",
     description: "I create websites that help a builder to showcase their work and build a strong online presence for their customers",
-    image: "src/assets/p2.png",
+    image: p2,
     link: "https://www.sapphireebd.com/"
   },
   {
     title: "JewelMuse Redesign Sprint",
     category: "UI / UX Design",
     description: "Redesigned the 'jewelmuse' website to enhance user experience. Focused on simplifying navigation and checkout.",
-    image: "src/assets/p3.png",
+    image: p3,
     link: "https://jewelmuse.in/"
   },
   {
     title: "Intractive Presentation",
     category: "Powerpoint presentation",
     description: "A collection of sharp, angular black prisms floating against a gradient dark background, showcasing geometric composition.",
-    image: "src/assets/p4.png",
+    image: p4,
     link: "https://www.behance.net/gallery/242867687/Powerpoint-presentation"
   },
   {
     title: "AI Product Poster Design",
     category: "Ai Design",
     description: "A collection of modern product posters with bold typography and vibrant gradients, showcasing clean product-focused layouts.",
-    image: "src/assets/p5.png",
+    image: p5,
     link: "https://www.behance.net/gallery/248594849/Ai-Product-poster-design-2026-"
   }
 
