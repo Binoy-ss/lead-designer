@@ -4,36 +4,48 @@ import './Projects.css';
 
 const projects = [
   {
-    title: "Summer Vibes Festival Campaign",
-    category: "Graphic Design",
-    description: "Created promotional materials for the 'Summer Vibes Festival', including posters, flyers, and social media graphics.",
-    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80"
+    title: "Expo Campaign",
+    category: "Design & Strategies",
+    description: "Created promotional materials for the 'National Expo', including posters, flyers, and social media graphics.",
+    image: "src/assets/p1.png",
+    link: "https://www.behance.net/gallery/248507411/Expo-Campaign-planning-creation-and-execution "
   },
   {
-    title: "Coral Spiral Abstract",
-    category: "Branding",
-    description: "A visually striking 3D abstract artwork featuring a coral-colored spiral form with smooth, flowing curves.",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80"
+    title: "Website Creation ",
+    category: "Web Design & Development",
+    description: "I create websites that help a builder to showcase their work and build a strong online presence for their customers",
+    image: "src/assets/p2.png",
+    link: "https://www.sapphireebd.com/"
   },
   {
-    title: "ShopEase Redesign Sprint",
+    title: "JewelMuse Redesign Sprint",
     category: "UI / UX Design",
-    description: "Redesigned the 'ShopEase' e-commerce app to enhance user experience. Focused on simplifying navigation and checkout.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+    description: "Redesigned the 'jewelmuse' website to enhance user experience. Focused on simplifying navigation and checkout.",
+    image: "src/assets/p3.png",
+    link: "https://jewelmuse.in/"
   },
   {
-    title: "Black Geometric Prisms",
-    category: "Branding",
+    title: "Intractive Presentation",
+    category: "Powerpoint presentation",
     description: "A collection of sharp, angular black prisms floating against a gradient dark background, showcasing geometric composition.",
-    image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&q=80"
+    image: "src/assets/p4.png",
+    link: "https://www.behance.net/gallery/242867687/Powerpoint-presentation"
+  },
+  {
+    title: "AI Product Poster Design",
+    category: "Ai Design",
+    description: "A collection of modern product posters with bold typography and vibrant gradients, showcasing clean product-focused layouts.",
+    image: "src/assets/p5.png",
+    link: "https://www.behance.net/gallery/248594849/Ai-Product-poster-design-2026-"
   }
+
 ];
 
 const Projects = () => {
   return (
     <section className="projects-section" id="projects">
       <div className="projects-container">
-        <motion.div 
+        <motion.div
           className="projects-header"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -48,25 +60,32 @@ const Projects = () => {
         </motion.div>
 
         <div className="projects-grid">
-          {projects.map((proj, idx) => (
-            <motion.div 
-              className="project-card"
-              key={idx}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: (idx % 2) * 0.2 }}
-            >
-              <div className="project-image-wrapper">
-                <img src={proj.image} alt={proj.title} className="project-image" />
-              </div>
-              <div className="project-info">
-                <span className="project-category">{proj.category}</span>
-                <h3 className="project-name">{proj.title}</h3>
-                <p className="project-detail">{proj.description}</p>
-              </div>
-            </motion.div>
-          ))}
+          {projects.map((proj, idx) => {
+            const CardWrapper = proj.link ? motion.a : motion.div;
+            return (
+              <CardWrapper
+                className="project-card"
+                key={idx}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: (idx % 2) * 0.2 }}
+                href={proj.link}
+                target={proj.link ? "_blank" : undefined}
+                rel={proj.link ? "noopener noreferrer" : undefined}
+                style={proj.link ? { textDecoration: 'none', color: 'inherit' } : undefined}
+              >
+                <div className="project-image-wrapper">
+                  <img src={proj.image} alt={proj.title} className="project-image" />
+                </div>
+                <div className="project-info">
+                  <span className="project-category">{proj.category}</span>
+                  <h3 className="project-name">{proj.title}</h3>
+                  <p className="project-detail">{proj.description}</p>
+                </div>
+              </CardWrapper>
+            );
+          })}
         </div>
       </div>
     </section>

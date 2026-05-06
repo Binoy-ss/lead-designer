@@ -49,7 +49,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #a1a1aa;
+  color: #ffffff;
   margin-bottom: 1.75rem;
 }
 
@@ -58,7 +58,7 @@
   font-weight: 500;
   line-height: 1.18;
   letter-spacing: -0.03em;
-  color: #f8f8f8;
+  color: #ffffff;
   margin: 0 0 1.25rem;
 }
 
@@ -93,7 +93,7 @@
   object-fit: cover;
   border-radius: 20px;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.06),
     0 40px 80px rgba(0, 0, 0, 0.7),
     0 8px 24px rgba(0, 0, 0, 0.5);
 }
@@ -141,7 +141,7 @@
   left: 10%;
   right: 10%;
   height: 40px;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.7) 0%, transparent 75%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, transparent 75%);
   filter: blur(12px);
   z-index: 0;
   pointer-events: none;
@@ -163,7 +163,7 @@
   inset: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: 24px;
+  border-radius: 32px;
   overflow: hidden;
 }
 
@@ -179,12 +179,10 @@
 .sc-front-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    170deg,
-    rgba(0,0,0,0.08) 0%,
-    rgba(0,0,0,0.55) 80%,
-    rgba(0,0,0,0.75) 100%
-  );
+  background: linear-gradient(170deg,
+      rgba(0, 0, 0, 0.08) 0%,
+      rgba(0, 0, 0, 0.55) 80%,
+      rgba(0, 0, 0, 0.75) 100%);
 }
 
 .sc-front-tag {
@@ -194,7 +192,7 @@
   font-size: 0.7rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255, 255, 255, 0.55);
   font-weight: 500;
 }
 
@@ -205,60 +203,51 @@
   /* Rotated 180° so it appears after the flip */
   transform: rotateY(180deg);
 
-  /* Premium matte glassmorphism */
-  background:
-    linear-gradient(145deg, rgba(28,28,32,0.95) 0%, rgba(18,18,22,0.98) 100%);
+  /* Premium base styles (backgrounds overridden by nth-child) */
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-
-  /* Refined border: inner highlight top-left, subtle outline */
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.10),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
-    0 32px 64px rgba(0, 0, 0, 0.6),
-    0 8px 24px rgba(0, 0, 0, 0.4);
 
   padding: 2.25rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover Lift & Shadow for Desktop Card */
+.sc-flip-card:hover .sc-face--back {
+  transform: rotateY(180deg) translateY(-6px) scale(1.015);
 }
 
 .sc-back-tag {
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  font-weight: 500;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
 }
 
 .sc-back-title {
   font-size: clamp(1.5rem, 2.2vw, 2rem);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.15;
-  color: #f0f0f2;
   margin: 0;
-  /* small decorative left accent */
   padding-left: 1rem;
-  border-left: 2px solid rgba(255,255,255,0.15);
+  border-left: 2px solid;
+  position: relative;
+  z-index: 2;
 }
 
 .sc-back-desc {
   font-size: 0.92rem;
-  color: #71717a;
   line-height: 1.6;
   margin: 0;
-}
-
-/* Divider */
-.sc-face--back::after {
-  content: '';
-  display: block;
-  height: 1px;
-  background: rgba(255,255,255,0.06);
-  margin: 0.25rem 0;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid;
 }
 
 .sc-back-list {
@@ -268,11 +257,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  position: relative;
+  z-index: 2;
 }
 
 .sc-back-list li {
   font-size: 0.88rem;
-  color: #a1a1aa;
   line-height: 1.45;
   padding-left: 1.2rem;
   position: relative;
@@ -286,7 +276,6 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.3);
 }
 
 /* ═══════════════════════════════════════════════
@@ -301,40 +290,215 @@
 }
 
 .sc-mobile-card {
-  background: rgba(22, 22, 26, 0.95);
-  border: 1px solid rgba(255,255,255,0.07);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.08),
-    0 16px 40px rgba(0,0,0,0.5);
-  border-radius: 20px;
+  border-radius: 32px;
   padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sc-mobile-card:hover {
+  transform: translateY(-6px) scale(1.015) !important;
 }
 
 .sc-mobile-tag {
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  font-weight: 500;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
 }
 
 .sc-mobile-title {
   font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.2;
-  color: #f0f0f2;
   margin: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .sc-mobile-desc {
   font-size: 0.9rem;
-  color: #71717a;
   line-height: 1.6;
   margin: 0;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid;
+}
+
+/* ═══════════════════════════════════════════════
+   PREMIUM CARD THEMES & TEXTURES
+═══════════════════════════════════════════════ */
+
+/* Texture Noise Overlay */
+.sc-face--back::before,
+.sc-mobile-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 150px 150px;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Radial Highlight Overlay */
+.sc-face--back::after,
+.sc-mobile-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left,
+      rgba(255, 255, 255, 0.24) 0%,
+      rgba(255, 255, 255, 0.08) 35%,
+      transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --- Card 1: Light Silver / White --- */
+.sc-flip-card:nth-child(1) .sc-face--back,
+.sc-mobile-card:nth-child(1) {
+  background: linear-gradient(145deg, #ffffff 0%, #e6e9f0 100%);
+  border: 1px solid rgba(255, 255, 255, 1);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 1),
+    inset 0 -1px 4px rgba(0, 0, 0, 0.05),
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.sc-flip-card:nth-child(1):hover .sc-face--back,
+.sc-mobile-card:nth-child(1):hover {
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 1),
+    inset 0 -1px 4px rgba(0, 0, 0, 0.05),
+    0 30px 60px rgba(0, 0, 0, 0.25),
+    0 12px 24px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+.sc-flip-card:nth-child(1) .sc-face--back::after,
+.sc-mobile-card:nth-child(1)::after {
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+}
+
+/* Text Colors for Card 1 */
+.sc-flip-card:nth-child(1) .sc-back-tag,
+.sc-mobile-card:nth-child(1) .sc-mobile-tag {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.sc-flip-card:nth-child(1) .sc-back-title,
+.sc-mobile-card:nth-child(1) .sc-mobile-title {
+  color: #111111;
+  border-left-color: rgba(0, 0, 0, 0.15);
+}
+
+.sc-flip-card:nth-child(1) .sc-back-desc,
+.sc-mobile-card:nth-child(1) .sc-mobile-desc {
+  color: rgba(0, 0, 0, 0.65);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+.sc-flip-card:nth-child(1) .sc-back-list li,
+.sc-mobile-card:nth-child(1) .sc-back-list li {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.sc-flip-card:nth-child(1) .sc-back-list li::before,
+.sc-mobile-card:nth-child(1) .sc-back-list li::before {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* --- Card 2: Rich Red / Crimson --- */
+.sc-flip-card:nth-child(2) .sc-face--back,
+.sc-mobile-card:nth-child(2) {
+  background: linear-gradient(135deg, #d90429 0%, #68000b 100%);
+  border: 1px solid rgba(255, 120, 120, 0.2);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 180, 180, 0.4),
+    inset 0 -1px 4px rgba(0, 0, 0, 0.3),
+    0 24px 48px rgba(0, 0, 0, 0.6),
+    0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.sc-flip-card:nth-child(2):hover .sc-face--back,
+.sc-mobile-card:nth-child(2):hover {
+  box-shadow:
+    inset 0 1px 2px rgba(255, 150, 150, 0.4),
+    inset 0 -1px 4px rgba(0, 0, 0, 0.4),
+    0 32px 64px rgba(0, 0, 0, 0.7),
+    0 16px 32px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 50, 50, 0.15);
+}
+
+.sc-flip-card:nth-child(2) .sc-face--back::after,
+.sc-mobile-card:nth-child(2)::after {
+  background: radial-gradient(circle at top left, rgba(255, 100, 100, 0.25) 0%, transparent 60%);
+}
+
+/* --- Card 3: Deep Charcoal / Black --- */
+.sc-flip-card:nth-child(3) .sc-face--back,
+.sc-mobile-card:nth-child(3) {
+  background: linear-gradient(135deg, #3f3f45 0%, #151518 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    inset 0 -1px 4px rgba(0, 0, 0, 0.4),
+    0 24px 48px rgba(0, 0, 0, 0.7),
+    0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.sc-flip-card:nth-child(3):hover .sc-face--back,
+.sc-mobile-card:nth-child(3):hover {
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.2),
+    inset 0 -1px 4px rgba(0, 0, 0, 0.5),
+    0 32px 64px rgba(0, 0, 0, 0.8),
+    0 16px 32px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(255, 255, 255, 0.08);
+}
+
+.sc-flip-card:nth-child(3) .sc-face--back::after,
+.sc-mobile-card:nth-child(3)::after {
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+}
+
+/* Text Colors for Card 2 & 3 (Dark Text) */
+.sc-flip-card:nth-child(n+2) .sc-back-tag,
+.sc-mobile-card:nth-child(n+2) .sc-mobile-tag {
+  color: #ffffff;
+}
+
+.sc-flip-card:nth-child(n+2) .sc-back-title,
+.sc-mobile-card:nth-child(n+2) .sc-mobile-title {
+  color: #ffffff;
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
+.sc-flip-card:nth-child(n+2) .sc-back-desc,
+.sc-mobile-card:nth-child(n+2) .sc-mobile-desc {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.sc-flip-card:nth-child(n+2) .sc-back-list li,
+.sc-mobile-card:nth-child(n+2) .sc-back-list li {
+  color: #ffffff;
+}
+
+.sc-flip-card:nth-child(n+2) .sc-back-list li::before,
+.sc-mobile-card:nth-child(n+2) .sc-back-list li::before {
+  background: #ffffff;
 }
 
 /* ═══════════════════════════════════════════════

@@ -4,14 +4,14 @@ import './Navbar.css';
 
 const Navbar = () => {
   return (
-    <motion.nav 
+    <motion.nav
       className="navbar"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
       <div className="navbar-container">
-        <a href="#" className="nav-logo">Portavia</a>
+        <a href="#" className="nav-logo">Binoy s s</a>
         <div className="nav-links">
           <a href="#home">Home</a>
           <a href="#about">About</a>

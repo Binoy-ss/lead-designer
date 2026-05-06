@@ -9,19 +9,19 @@ import './Services.css';
 const services = [
   {
     title: "Strategy &\nDiscovery",
-    tag: "01",
+    tag: "",
     desc: "We research, position, and define the direction before a single pixel is drawn.",
     items: ["Brand positioning & messaging", "Market research & analysis", "User persona development", "Product roadmap & strategy"]
   },
   {
     title: "Brand\nIdentity",
-    tag: "02",
+    tag: "",
     desc: "Every visual touchpoint — built with intention and unmistakable character.",
     items: ["Logo & visual identity systems", "Typography & colour design", "Brand guidelines & documentation", "Custom illustrations & iconography"]
   },
   {
     title: "Web\nExperience",
-    tag: "03",
+    tag: "",
     desc: "Fast, responsive, immersive. Interfaces that turn visitors into believers.",
     items: ["Responsive web design", "UI/UX design systems", "Interactive prototyping", "High-performance front-end"]
   }
@@ -51,9 +51,9 @@ const useMediaQuery = (query) => {
 const FlipCard = ({ service, index, splitProgress, flipProgress }) => {
   /* Scroll ranges — split phase: 0.25→0.55, flip phase: 0.55→0.9 */
   const SPLIT_START = 0.20;
-  const SPLIT_END   = 0.55;
-  const FLIP_START  = 0.55;
-  const FLIP_END    = 0.92;
+  const SPLIT_END = 0.55;
+  const FLIP_START = 0.55;
+  const FLIP_END = 0.92;
 
   /* ── SPLIT PHASE: panels spread apart from centre ── */
   // Each panel starts overlapping at centre, ends at its column position
@@ -75,7 +75,7 @@ const FlipCard = ({ service, index, splitProgress, flipProgress }) => {
   // Stagger each card: index 0 flips first, 2 last
   const STAGGER = 0.09;
   const flipStart = FLIP_START + index * STAGGER;
-  const flipEnd   = FLIP_END   + index * STAGGER * 0.5;
+  const flipEnd = FLIP_END + index * STAGGER * 0.5;
 
   const rotateY = useTransform(flipProgress, [flipStart, flipEnd], [0, 180]);
 
@@ -151,11 +151,11 @@ const Services = () => {
   });
 
   /* ── Hero phase: full-width image fades in (0→0.18) ── */
-  const heroOpacity  = useTransform(scrollYProgress, [0, 0.10, 0.22, 0.28], [0, 1, 1, 0]);
-  const heroScale    = useTransform(scrollYProgress, [0, 0.10, 0.28], [1.06, 1.0, 0.96]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.10, 0.22, 0.28], [0, 1, 1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.10, 0.28], [1.06, 1.0, 0.96]);
 
   /* ── Text header: slides up and stays through the whole animation ── */
-  const headerY      = useTransform(scrollYProgress, [0, 0.12], [40, 0]);
+  const headerY = useTransform(scrollYProgress, [0, 0.12], [40, 0]);
   const headerOpacity = useTransform(scrollYProgress, [0, 0.12], [0, 1]);
 
   /* ── Cards row: appears during split phase (0.22→0.55) ── */
@@ -177,11 +177,10 @@ const Services = () => {
         >
           <span className="section-label">My Expertise</span>
           <h2 className="services-title">
-            We craft brand identities, narratives, and digital experiences
-            that keep up with your ambition.
+            You build what matters.I’ll build how the world perceives it.
           </h2>
           <p className="services-subtitle">
-            So you can focus on building what matters, while we shape how the world sees it.
+            ssss
           </p>
         </motion.div>
 
@@ -191,7 +190,6 @@ const Services = () => {
             className="sc-hero-banner"
             style={{ opacity: heroOpacity, scale: heroScale }}
           >
-            <img src={heroImg} alt="Services visual" className="sc-hero-img" />
             <div className="sc-hero-grain" />
           </motion.div>
         )}
