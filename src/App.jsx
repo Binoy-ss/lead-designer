@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 
 import BlogInsights from './components/BlogInsights';
 import ContactFooter from './components/ContactFooter';
+import FloatingResumeButton from './components/FloatingResumeButton';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
 
       <BlogInsights />
       <ContactFooter />
+      <FloatingResumeButton />
     </>
   );
 }
