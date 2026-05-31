@@ -1,6 +1,6 @@
 import React from 'react';
 import './FloatingResumeButton.css';
-import resumePdf from '../assets/Binoy_Lead designer.pdf';
+import resumePdf from '../assets/Binoy_Lead_designer.pdf';
 
 const FloatingResumeButton = () => {
   const handleDownload = () => {
