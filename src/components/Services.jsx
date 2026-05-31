@@ -10,7 +10,7 @@ const services = [
   {
     title: "Strategy &\nDiscovery",
     tag: "",
-    desc: "We research, position, and define the direction before a single pixel is drawn.",
+    desc: "Me research, position, and define the direction before a single pixel is drawn.",
     items: ["Brand positioning & messaging", "Market research & analysis", "User persona development", "Product roadmap & strategy"]
   },
   {
@@ -104,8 +104,6 @@ const FlipCard = ({ service, index, splitProgress, flipProgress }) => {
             backgroundPosition: `${index * 50}% center`,
           }}
         >
-          {/* Overlay shimmer on front */}
-          <div className="sc-front-overlay" />
           <div className="sc-front-tag">{service.tag}</div>
         </div>
 
@@ -180,7 +178,7 @@ const Services = () => {
             You build what matters.I’ll build how the world perceives it.
           </h2>
           <p className="services-subtitle">
-            ssss
+            
           </p>
         </motion.div>
 

@@ -7,7 +7,7 @@
 
 /* ─── Section shell ─── */
 .services-section {
-  background-color: #0d0d0d;
+  background-color: transparent; /* removed dark background overlay */
   color: #fff;
   position: relative;
   font-family: 'Inter', system-ui, sans-serif;
@@ -94,8 +94,8 @@
   border-radius: 20px;
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 40px 80px rgba(0, 0, 0, 0.7),
-    0 8px 24px rgba(0, 0, 0, 0.5);
+    0 40px 80px rgba(0, 0, 0, 0.25),
+    0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
 /* Film grain overlay on hero */
@@ -104,7 +104,8 @@
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   background-size: 200px 200px;
-  mix-blend-mode: overlay;
+  mix-blend-mode: normal; /* avoid darkening via blend modes */
+  opacity: 0.02; /* near-transparent if grain is desired */
   border-radius: 20px;
   pointer-events: none;
 }
@@ -134,18 +135,7 @@
   will-change: transform;
 }
 
-/* Drop shadow that deepens during flip mid-point */
-.sc-card-shadow {
-  position: absolute;
-  bottom: -28px;
-  left: 10%;
-  right: 10%;
-  height: 40px;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, transparent 75%);
-  filter: blur(12px);
-  z-index: 0;
-  pointer-events: none;
-}
+
 
 /* ─── 3D flip scene wrapper ─── */
 .sc-flip-scene {
@@ -167,22 +157,23 @@
   overflow: hidden;
 }
 
+/* Ensure face content sits above backgrounds and overlays */
+.sc-face > * {
+  position: relative;
+  z-index: 3;
+}
+
 /* ═══════════════════════════════════════════════
    FRONT FACE — triptych image slice
 ═══════════════════════════════════════════════ */
 .sc-face--front {
-  background-color: #111;
+  background-color: transparent; /* ensure front image shows without a dark base */
   /* backgroundImage / backgroundPosition set inline per card */
 }
 
 /* Gradient overlay so tag reads cleanly */
 .sc-front-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(170deg,
-      rgba(0, 0, 0, 0.08) 0%,
-      rgba(0, 0, 0, 0.55) 80%,
-      rgba(0, 0, 0, 0.75) 100%);
+  display: none !important; /* remove any front overlay element */
 }
 
 .sc-front-tag {
@@ -337,31 +328,13 @@
    PREMIUM CARD THEMES & TEXTURES
 ═══════════════════════════════════════════════ */
 
-/* Texture Noise Overlay */
+/* Remove card overlays to keep card content fully visible */
 .sc-face--back::before,
-.sc-mobile-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  background-size: 150px 150px;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Radial Highlight Overlay */
 .sc-face--back::after,
+.sc-mobile-card::before,
 .sc-mobile-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top left,
-      rgba(255, 255, 255, 0.24) 0%,
-      rgba(255, 255, 255, 0.08) 35%,
-      transparent 70%);
+  display: none !important;
   pointer-events: none;
-  z-index: 1;
 }
 
 /* --- Card 1: Light Silver / White --- */
