@@ -14,9 +14,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.services-section {
-  background-color: transparent;
-}
+
 /* Optional custom scrollbar for better aesthetics */
 ::-webkit-scrollbar {
   width: 8px;
