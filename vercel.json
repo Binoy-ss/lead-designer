@@ -1,7 +1,7 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "ignoreCommand": "npx git diff --quiet $VERCEL_GIT_PREVIOUS_COMMIT $VERCEL_GIT_COMMIT -- . ':!node_modules' || true",
+  "ignoreCommand": "git diff --quiet $VERCEL_GIT_PREVIOUS_COMMIT $VERCEL_GIT_COMMIT -- . ':!node_modules' || true",
   "cleanUrls": true,
   "trailingSlash": false,
   "env": {
