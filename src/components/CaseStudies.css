@@ -1,0 +1,300 @@
+/* ═══════════════════════════════════════════════════════════
+   CASE STUDIES — Premium Agency-Quality Section
+═══════════════════════════════════════════════════════════ */
+
+/* ─── Section shell ─── */
+.cs-section {
+  position: relative;
+  padding: 8rem 5%;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* ─── Ambient background blobs ─── */
+.cs-bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+.cs-bg-blob--1 {
+  width: 600px;
+  height: 600px;
+  top: -100px;
+  right: -150px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+}
+
+.cs-bg-blob--2 {
+  width: 500px;
+  height: 500px;
+  bottom: 0;
+  left: -100px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.06) 0%, transparent 70%);
+}
+
+/* ─── Container ─── */
+.cs-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════════ */
+.cs-header {
+  max-width: 720px;
+  margin-bottom: 5rem;
+}
+
+.cs-title {
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  margin: 0 0 1.25rem;
+  color: #ffffff;
+}
+
+.cs-title--muted {
+  color: #52525b;
+}
+
+.cs-subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: #71717a;
+  line-height: 1.65;
+  max-width: 560px;
+  font-weight: 400;
+}
+
+/* ═══════════════════════════════════════════════
+   GRID
+═══════════════════════════════════════════════ */
+.cs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* ═══════════════════════════════════════════════
+   CARD
+═══════════════════════════════════════════════ */
+.cs-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Promote to its own layer for smooth parallax */
+  will-change: transform;
+}
+
+.cs-card:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  transform: translateY(-6px) !important;
+}
+
+/* ─── Image wrapper ─── */
+.cs-card__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #111;
+}
+
+.cs-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cs-card:hover .cs-card__image {
+  transform: scale(1.06);
+}
+
+/* Gradient overlay on image */
+.cs-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+/* ─── Category badge ─── */
+.cs-card__badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent, #ffffff);
+  white-space: nowrap;
+  z-index: 2;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.cs-card:hover .cs-card__badge {
+  background: rgba(0, 0, 0, 0.72);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Card body ─── */
+.cs-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.5rem 1.5rem 1.75rem;
+  flex: 1;
+}
+
+.cs-card__title {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.cs-card:hover .cs-card__title {
+  color: #e4e4e7;
+}
+
+.cs-card__desc {
+  font-size: 0.9rem;
+  color: #71717a;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+/* ─── CTA row ─── */
+.cs-card__cta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #52525b;
+  transition: color 0.3s ease;
+}
+
+.cs-card:hover .cs-card__cta {
+  color: #a1a1aa;
+}
+
+.cs-card__arrow {
+  display: inline-block;
+  font-size: 1rem;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cs-card:hover .cs-card__arrow {
+  transform: translateX(5px);
+}
+
+/* ─── Hover glow border ─── */
+.cs-card__glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: inset 0 0 0 1px var(--accent, rgba(255, 255, 255, 0.15));
+  transition: opacity 0.4s ease;
+}
+
+.cs-card:hover .cs-card__glow {
+  opacity: 0.35;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+
+/* Tablet — 2 columns */
+@media (max-width: 1024px) {
+  .cs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cs-header {
+    margin-bottom: 3.5rem;
+  }
+}
+
+/* Mobile — 1 column */
+@media (max-width: 640px) {
+  .cs-section {
+    padding: 5rem 5%;
+  }
+
+  .cs-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .cs-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .cs-title {
+    font-size: clamp(2rem, 8vw, 2.6rem);
+  }
+
+  .cs-card__body {
+    padding: 1.25rem;
+  }
+
+  /* Disable parallax translate on mobile for performance */
+  .cs-card {
+    will-change: auto;
+    transform: none !important;
+  }
+}
+
+/* Touch-target enhancement */
+@media (hover: none) {
+  .cs-card:hover {
+    transform: none !important;
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.07);
+  }
+}

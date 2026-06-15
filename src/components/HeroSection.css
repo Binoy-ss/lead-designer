@@ -11,9 +11,7 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* needed so absolutely-positioned hero-content is relative to this */
 }
 
 .hero-canvas {
@@ -27,7 +25,7 @@
 }
 
 .hero-content {
-  position: relative;
+  position: absolute;
   z-index: 2;
   text-align: center;
   color: #fff;
@@ -35,9 +33,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 0 5%;
+  justify-content: flex-end;
+  padding: 0 5% 8%;
   width: 100%;
+  bottom: 0;
+  left: 0;
 }
 
 .hero-name {

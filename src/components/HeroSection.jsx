@@ -113,7 +113,7 @@ const HeroSection = () => {
             style={{ opacity: descOpacity, y: descY }}
             className="hero-desc"
           >
-            Lead Graphic Designer | Communication & Presentation Design
+            Vibe Designer | Communication & Presentation Design
           </motion.p>
         </div>
       </div>
